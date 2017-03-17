@@ -1,0 +1,24 @@
+{
+  "name": "awkwardideas/parrot",
+  "description": "Repeats requested variables back as a placeholder for javascript templates in laravel",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Chad Haney",
+      "email": "chad@awkwardideas.com"
+    },
+    {
+      "name": "Awkward Ideas",
+      "email": "support@awkwardideas.com"
+    }
+  ],
+  "require": {
+    "php": ">=5.6.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "AwkwardIdeas\\Parrot\\": "src/"
+    }
+  },
+  "minimum-stability": "dev"
+}
