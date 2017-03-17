@@ -1,5 +1,5 @@
 <?php
-namespace AwkwardIdeas\SwitchBlade;
+namespace AwkwardIdeas\Parrot;
 
 use AwkwardIdeas\Parrot\ParrotModel;
 use Illuminate\Support\Facades\Blade;

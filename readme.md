@@ -21,5 +21,5 @@ AwkwardIdeas\Parrot\ParrotServiceProvider::class,
 
 # Available Directives
 ```blade
-@parrot('view.name', ['some' => 'data'])
+@parrot('view.name', ['some' => ""])
 ``` 
