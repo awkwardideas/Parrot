@@ -39,12 +39,30 @@ Under Facades/Class Aliases Add
 Similar to @includeif blade directive
 
 ```blade
-@parrotClass()
+@parrotClass
 ```
 If the template is called with parrot, it will show the $parrotClass variable.  A default class of parrotTemplate is output if a custom class is not provided.
 
 ```blade
-@parrotID()
+@parrotID
 ```
 If the template is called with parrot, it will show the $parrotID variable.
 
+```blade
+@onParrot
+```
+Starts an if case for when parrot is being used. If not being parroted, the template wont render the contained content. An ```@else``` may be used with ```@onParrot```
+```blade
+@endOnParrot
+```
+Ends the if case for ```@onParrot```
+
+```blade
+@noParrot
+```
+Starts an if case for when the template is being render without parrot. If being parroted, the template wont render the contained content. An ```@else``` may be used with ```@noParrot```
+
+```blade
+@endNoParrot
+```
+Ends the if case for ```@endNoParrot```
