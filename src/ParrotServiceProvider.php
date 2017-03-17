@@ -17,7 +17,11 @@ class ParrotServiceProvider extends ServiceProvider
 
         Directive::AddCustomDirectives();
 
+        $this->app->singleton('parrot.model', function ($app) {
+            return new ParrotModel($app);
+        });
 
+        $this->app->alias('parrot.model', 'AwkwardIdeas\Parrot\ParrotModel');
     }
 
     /**
@@ -47,4 +51,13 @@ class ParrotServiceProvider extends ServiceProvider
         return config_path('parrot.php');
     }
 
+    /**
+     * Get the services provided by the provider.
+     *
+     * @return array
+     */
+    public function provides()
+    {
+        return array('parrot.model');
+    }
 }

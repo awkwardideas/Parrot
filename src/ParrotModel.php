@@ -5,6 +5,11 @@ use Illuminate\Support\ServiceProvider;
 class ParrotModel
 {
     private $modelName="";
+
+    public static function Model($modelName){
+        return new ParrotModel(['modelName'=>$modelName]);
+    }
+
     public function __construct( $params = array() ){
         if( $params ){
             foreach( $params as $property => $value ){
@@ -26,14 +31,14 @@ class ParrotModel
     }
 
     public function __get( $property ) {
-        return ReturnAsJavascriptParrot($property);
-
         $methodName = 'Get'. ucwords( $property );
 
         if( method_exists( $this, $methodName ) ){
             return $this->$methodName();
         }else if( property_exists( $this, $property ) ) {
             return $this->$property;
+        }else{
+            return self::ReturnAsJavascriptParrot($property);
         }
     }
 

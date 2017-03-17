@@ -19,6 +19,12 @@ Under Package Service Providers Add
 AwkwardIdeas\Parrot\ParrotServiceProvider::class,
 ```
 
+Under Facades/Class Aliases Add
+
+```php
+'Parrot' => AwkwardIdeas\Parrot\Facades\Parrot::class,
+```
+
 # Available Directives
 ```blade
 @parrot('view.name', ['some' => ""])
