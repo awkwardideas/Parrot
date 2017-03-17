@@ -56,6 +56,11 @@ class ParrotModel
         }
     }
 
+    public function __toString()
+    {
+        return "@{{" . $this->Get("modelName") . "}}";
+    }
+
 
     public function ReturnAsJavascriptParrot($property){
         if($this->Get("modelName") != ""){

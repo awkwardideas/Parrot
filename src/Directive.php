@@ -11,20 +11,18 @@ class Directive{
     {
         Blade::directive('parrot', function ($expression) {
             $expression = self::MakeParrotExpression($expression);
-
             return "<?php echo \$__env->make({$expression}, array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>";
         });
 
         Blade::directive('parrotif', function ($expression) {
             $expression = self::MakeParrotExpression($expression);
-
             return "<?php if (\$__env->exists({$expression})) echo \$__env->make({$expression}, array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>";
         });
     }
 
     public static function GetArguments($expression){
         $expression = self::stripParentheses($expression);
-        $args = explode(',', $expression);
+        $args = preg_split('/(?!\B\[[^\]]*),(?![^\[]*\]\B)/m', $expression);
         foreach($args as $key=>$arg){
             $arg = self::parseData(self::stripNewlines($arg));
             if(preg_match("/^\[[\s\S]*\]$/m", $arg, $matches)){
@@ -83,7 +81,7 @@ class Directive{
         $builtArray = [];
         foreach($arraySets as $arraySet){
             list($key, $value) = explode('=>',$arraySet);
-            $builtArray[trim($key,"'\"")] = trim($value,"'\"");
+            $builtArray[trim($key," '\"")] = trim($value," '\"");
         }
         return $builtArray;
     }
@@ -96,6 +94,7 @@ class Directive{
                 $strArray.=",";
             }
             $strArray .= "'{$key}'=>{$value}";
+            $keyCount++;
         }
         return $strArray . "]";
     }
